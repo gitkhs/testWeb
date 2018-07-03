@@ -1,0 +1,33 @@
+<!DOCTYPE>
+
+<html>
+
+<body>
+
+ 
+
+<a id="start_onboarding_flow" href=https://www.sandbox.paypal.com/consumeronboarding/entry?referralid=QUFHbThpVmZ2ejFWWTBaOUlic2dmb0lJVGsyQ1d6bnBIaUxnS3UxaUV6aXVTMGoxMWxVMDFnb2FMT2wxVnRNbg&scope=https%3A%2F%2Furi.paypal.com%2Fservices%2Fpaypalattributes+https%3A%2F%2Furi.paypal.com%2Fservices%2Fwallet%2Fcard-accounts%2Fexternal-update+https%3A%2F%2Furi.paypal.com%2Fservices%2Fwallet%2Fcard-accounts%2Fread+https%3A%2F%2Furi.paypal.com%2Fservices%2Fwallet%2Fcard-accounts%2Fpartner-update&state=key1%3Dvalue1%3Bkey2%3Dvalue2&redirect_uri=https%3A%2F%2Ftst-nfan.shinhancard.com%2Fmpa%2FAPSFM251N%2FAPSFM251C01.shc>Start Onboarding Flow</a>
+
+ 
+
+<script>
+
+window.paypalPartnerReady = function paypalPartnerReady() {
+
+  paypal.partner.setup({
+
+    button: 'start_onboarding_flow',
+
+    sandbox: true
+
+  });
+
+}
+
+</script>
+
+<script src="https://www.paypalobjects.com/js/external/conspartneronb/partner.js?c=1182015" async></script>
+
+</body>
+
+</html>
