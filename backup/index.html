@@ -1,0 +1,30 @@
+<!DOCTYPE>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+
+<form method="POST" action="https://www.sandbox.paypal.com/consumeronboarding/entry">
+<input type="hidden" name="referralid" value="QUFFVDV4UlFucGRFaVI3MFpNTlhoTUtIVTZiOXdxNU4vbFV2TXFKTXJIaVBjT3BzaHllRTRvWXRLSzA2TnNyRw" /> 
+<input type="hidden" name="scope" value="https://uri.paypal.com/services/paypalattributes https://uri.paypal.com/services/wallet/card-accounts/external-update https://uri.paypal.com/services/wallet/card-accounts/read https://uri.paypal.com/services/wallet/card-accounts/partner-update" /> 
+<input type="hidden" name="state" value="key1=value1;key2=value2" /> 
+<input type="hidden" name="redirect_uri" value="https://www.somereturnurl.com/return" />
+<button type="submit" id="start_onboarding_flow">Start Onboarding Flow</button>
+</form>
+
+<script>
+window.paypalPartnerReady = function paypalPartnerReady() {
+	paypal.partner.setup({
+		button: 'start_onboarding_flow',
+		sandbox: true
+	}); 
+};
+</script>
+
+<script src="https://www.paypalobjects.com/js/external/conspartneronb/partner.js" async></script>
+
+</body>
+</html>
