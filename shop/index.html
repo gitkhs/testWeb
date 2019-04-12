@@ -1,0 +1,95 @@
+---
+layout: shop
+title: "index"
+abcd:
+  - 50
+  - 100
+  - 150
+  - 150
+  - 50
+  - 100
+---
+
+<div data-app-view="v01">
+  <div class="card border-0 rounded-0">
+    <img class="card-img rounded-0" src="{{ "/resource/blossom/spring.jpg" | relative_url }}" data-src="holder.js/100px180/" alt="Card image cap">
+    <div class="card-img-overlay">
+        <div class="input-group mt-3">
+          <input type="text" class="form-control">
+          <div class="input-group-append">
+            <button data-bind="event:on.search" class="btn btn-primary">검색</button>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="container mt-4">
+    <div class="row mb-2">
+
+      <!-- ko foreach:vo.list -->
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <img data-bind="attr:{src:$data.image}" class="card-img-top" src="{{ "/resource/blossom/winter.jpg" | relative_url }}" data-src="holder.js/100px180/" alt="Card image cap">
+          <div class="card-body">
+            <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+            <div class="row mt-3">
+              <div class="col-12 text-right">
+                <button data-bind="click:$data.prodInfo" type="button" class="btn btn-sm btn-outline-secondary">자세히</button>
+                <button data-bind="click:$data.prodCart" type="button" class="btn btn-sm btn-outline-success">장바구니</button>
+                <button type="button" class="btn btn-sm btn-outline-primary">바로구매</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /ko -->
+
+    </div>
+    <div class="row mb-2">
+      <div class="offset-6 col-6 offset-md-8 col-md-4">
+        <button type="button" class="btn btn-block btn-info">more</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  imgDummy(2000, 2000, '#aaa', document.querySelector('.card-img.rounded-0'));
+
+  !function(app) {
+    app.require('product/info.js', 'product/cart.js');
+
+    app.view('v01', function(ctrl) {
+      ctrl.onload(function(prm) {
+        ctrl.vo.list.push({
+          image: '{{ "/resource/blossom/winter.jpg" | relative_url }}',
+          prodInfo: prodInfo,
+          prodCart: prodCart
+        });
+      });
+
+      ctrl.vo.list = ctrl.observer([]);
+      ctrl.on.search = ctrl.event(function(hd) {
+        hd.click = function(vo, ev) {
+          // app.alert('test message', ev).then(function() {
+          //   ctrl.log('-click-');
+          // });
+          // var info = app.get('productCart', {focus:ev});
+          // info.open();
+          ctrl.vo.list.push({
+            image: imgDummy(2000, 2000, '#aaa')
+          });
+        };
+      });
+
+      var prodInfo = function(vo, ev) {
+        var info = app.get('productInfo', {focus:ev});
+        info.open();
+      };
+      var prodCart = function(vo, ev) {
+        var cart = app.get('productCart', {focus:ev});
+        cart.open();
+      };
+    });
+  }(MakeApp('v01'));
+</script>

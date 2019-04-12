@@ -1,0 +1,173 @@
+---
+title: 2109
+---
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{ layout.title }}-{{ page.title }}</title>
+  <link rel="stylesheet" href="{{ "/resource/bootstrap.min.css" | relative_url }}">
+  <style>
+  body {
+    color: #5a5a5a;
+    padding-bottom: 60px;
+  }
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    line-height: 45px;
+    z-index: 2010;
+  }
+  .footer .text-light {
+    text-shadow: 0 .05rem .1rem rgba(255, 255, 255, .5);
+  }
+
+  [data-app-resource] {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2000;
+  }
+  [data-app-resource] >:last-child {
+    background:rgba(200, 200, 200, 0.5);
+  }
+  [data-app-popup] {
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  /* paper-layer */
+  [data-app-popup].paper-layer >:first-child {
+    width: 100vw;
+    height: 100vh;
+  }
+  [data-app-popup].paper-layer .card-body {
+    /* max-height: 70vh; */
+    overflow-y: auto;
+    padding-bottom: 60px;
+  }
+  [data-app-popup].paper-layer [data-app-motion=open] {
+    animation: paper-layer-open 1s 1;
+  }
+  [data-app-popup].paper-layer [data-app-motion=close] {
+    animation: paper-layer-close 1s 1;
+  }
+  @keyframes paper-layer-open {
+    0% { margin-left: 100vw; opacity: 0; }
+  }
+  @keyframes paper-layer-close {
+    100% { margin-left: 100vw; opacity: 0; }
+  }
+  @media (min-width: 991.98px) {
+    [data-app-popup].paper-layer {
+      justify-content: start;
+    }
+    [data-app-popup].paper-layer >:first-child {
+      left: 19%;
+      width: calc(100% - 20%);
+    }
+  }
+
+  /* modal-layer */
+  [data-app-popup].modal-layer >:first-child {
+    width: 90vw;
+  }
+  [data-app-popup].modal-layer .card-body {
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+  [data-app-popup].modal-layer [data-app-motion=open] {
+    animation: modal-layer-open 1s 1;
+  }
+  [data-app-popup].modal-layer [data-app-motion=close] {
+    animation: modal-layer-close 1s 1;
+  }
+  @keyframes modal-layer-open {
+    0% { margin-top: -10vh; opacity: 0; }
+  }
+  @keyframes modal-layer-close {
+    100% { margin-top: -10vh; opacity: 0; }
+  }
+  @media (min-width: 991.98px) {
+    [data-app-popup].modal-layer {
+      justify-content: start;
+    }
+    [data-app-popup].modal-layer >:first-child {
+      left: 19%;
+      width: calc(100% - 20%);
+    }
+  }
+/* sheet-layer */
+[data-app-popup].sheet-layer {
+  align-items: flex-end;
+}
+[data-app-popup].sheet-layer >:first-child {
+  width: 100vw;
+}
+[data-app-popup].sheet-layer .list-group,
+[data-app-popup].sheet-layer .card-body {
+  max-height: 50vh;
+  padding-bottom: 60px;
+  overflow-y: auto;
+}
+[data-app-popup].sheet-layer [data-app-motion=open] {
+  animation: sheet-layer-open 1s 1;
+}
+[data-app-popup].sheet-layer [data-app-motion=close] {
+  animation: sheet-layer-close 1s 1;
+}
+@keyframes sheet-layer-open {
+  0% { margin-bottom: -10vh; opacity: 0; }
+}
+@keyframes sheet-layer-close {
+  100% { margin-bottom: -10vh; opacity: 0; }
+}
+@media (min-width: 991.98px) {
+  [data-app-popup].sheet-layer {
+    justify-content: start;
+  }
+  [data-app-popup].sheet-layer >:first-child {
+    left: 19%;
+    bottom: calc(1.5% + 60px);
+    width: calc(100% - 20%);
+  }
+
+}
+
+  </style>
+      
+  <script src="{{ "/resource/make-up.js" | relative_url }}"></script>
+  <script src="{{ "/shop/gnb.js" | relative_url }}"></script>
+  <script>
+  !function(app) {
+    app.root = '{{""|relative_url}}';
+  }(MakeApp());
+  </script>
+</head>
+<body class="bg-light">
+
+  {{ content }}
+
+  <footer class="footer bg-dark">
+    <div class="container d-flex flex-wrap justify-content-between">
+      <div><a href="{{ "/shop" | relative_url }}"><span class="badge text-light">home</span></a></div>
+      <div>
+        <a href="{{ "/shop/order" | relative_url }}"><span class="badge text-light">구매이력</span></a>
+        <span class="badge text-secondary">|</span>
+        <a href="{{ "/shop/myinfo" | relative_url }}"><span class="badge text-light">내정보</span></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
