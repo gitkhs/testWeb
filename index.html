@@ -27,12 +27,12 @@ body { overflow-x: hidden; }
   if(window.innerWidth < window.innerHeight/2|0) {
     banner.style.cssText = 'height: 40vh;';
   }
-  // new Blossom({
-  //   interval: 3,
-  //   container: '#blossom-banner',
-  //   images: [
-  //     '{{ "/resource/blossom/spring.jpg" | relative_url }}',
-  //     '{{ "/resource/blossom/winter.jpg" | relative_url }}'
-  //   ]
-  // });
+  new Blossom({
+    interval: 3,
+    container: '#blossom-banner',
+    images: [
+      '{{ "/resource/blossom/spring.jpg" | relative_url }}',
+      '{{ "/resource/blossom/winter.jpg" | relative_url }}'
+    ]
+  });
 </script>
